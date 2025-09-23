@@ -225,8 +225,23 @@
     </div>
 
     <div class="events-wrapper">
-        {# Event 1 #}
+        {# Event 1 - Yard Sale #}
         <div class="event-container" id="event-1">
+            <img src="{{ url_for('static', filename='images/yardsale.jpg') }}" class="event-image">
+            <div class="event-text">
+                <h2>Yard Sale</h2>
+                <div>
+                    <p>Come join us for some bargain hunting and unique finds! ✨</p>
+                    <p>We’re clearing out closets and cupboards with a secondhand sale full of gently used clothes, accessories, jewellery and more. 🛍️💗</p>
+                    <p>Whether you’re looking for a new outfit, some vintage gems, or household essentials, there’s something for everyone!! 💜</p>
+                    <p><strong>Location: </strong>Eastern Avenue (Glass Triangle Lawns)</p>
+                    <p><strong>Date & Time: </strong>1-4pm, October 14th</p>
+                </div>
+            </div>
+        </div>
+
+        {# Event 2 - Peer Mentoring Program #}
+        <div class="event-container" id="event-2" style="display: none;">
             <img src="{{ url_for('static', filename='images/mentor-with-wit-2025.png') }}" class="event-image">
             <div class="event-text">
                 <h2>Peer Mentoring Program</h2>
@@ -245,8 +260,8 @@
             </div>
         </div>
 
-        {# Event 2 #}
-        <div class="event-container" id="event-2" style="display: none;">
+        {# Event 3 - FoundersHack Sydney #}
+        <div class="event-container" id="event-3" style="display: none;">
             <img src="{{ url_for('static', filename='images/foundershack.jpg') }}" class="event-image">
             <div class="event-text">
                 <h2>FoundersHack Sydney</h2>
@@ -288,6 +303,12 @@
     </div>
 
     <div class="events-grid" id="events-2025">
+        <img src="{{ url_for('static', filename='images/officetour.jpg') }}" class="event-card">
+        <img src="{{ url_for('static', filename='images/pathway.png') }}" class="event-card">
+        <img src="{{ url_for('static', filename='images/cyberdefense.png') }}" class="event-card">
+        <img src="{{ url_for('static', filename='images/womeninstemnight.png') }}" class="event-card">
+        <img src="{{ url_for('static', filename='images/sem2welcomepic.png') }}" class="event-card">
+        <img src="{{ url_for('static', filename='images/radiobankevent.png') }}" class="event-card">
         <img src="{{ url_for('static', filename='images/USYDxWIT.jpg') }}" class="event-card">
         <img src="{{ url_for('static', filename='images/lockinsession.jpg') }}" class="event-card">
         <img src="{{ url_for('static', filename='images/techtalks.jpg') }}" class="event-card">
@@ -303,19 +324,24 @@
             });
             document.getElementById(eventId).style.display = 'flex';
 
-            // Update arrow states
             const prevArrow = document.getElementById('prev-arrow');
             const nextArrow = document.getElementById('next-arrow');
+            
             if (eventId === 'event-1') {
                 prevArrow.classList.add('disabled');
                 prevArrow.onclick = null;
                 nextArrow.classList.remove('disabled');
                 nextArrow.onclick = () => showEvent('event-2');
-            } else {
-                nextArrow.classList.add('disabled');
-                nextArrow.onclick = null;
+            } else if (eventId === 'event-2') {
                 prevArrow.classList.remove('disabled');
                 prevArrow.onclick = () => showEvent('event-1');
+                nextArrow.classList.remove('disabled');
+                nextArrow.onclick = () => showEvent('event-3');
+            } else {
+                prevArrow.classList.remove('disabled');
+                prevArrow.onclick = () => showEvent('event-2');
+                nextArrow.classList.add('disabled');
+                nextArrow.onclick = null;
             }
         }
 

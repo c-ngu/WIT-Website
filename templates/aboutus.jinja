@@ -186,6 +186,64 @@
         max-width: 500px;
     }
 
+    .subcom-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 30px;
+    }
+
+    .subcom-item {
+        flex: 0 0 30%;
+        padding: 20px;
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        text-align: center;
+    }
+
+    .subcom-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .subcom-name {
+        font-size: 1.6rem;
+        font-weight: 600;
+        color: #7A1F8D;
+        background: linear-gradient(90deg, #C991D1, #7A1F8D);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+        padding: 5px 0;
+        letter-spacing: 0.5px;
+        transition: transform 0.3s ease;
+    }
+
+    .subcom-item:hover .subcom-name {
+        transform: scale(1.05);
+    }
+
+    .subcom-members {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .subcom-members li {
+        font-size: 1.2rem;
+        color: #333;
+        margin: 8px 0;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .subcom-members li:hover {
+        color: #7A1F8D;
+        transform: translateX(5px);
+    }
+
     @media only screen and (max-width: 900px) {
         .profile {
             flex: 0 0 45%;
@@ -201,6 +259,9 @@
         .mission-content .caption {
             text-align: center;
             font-size: 1.1em;
+        }
+        .subcom-item {
+            flex: 0 0 45%;
         }
     }
 
@@ -227,6 +288,15 @@
         .content-section {
             font-size: 1em;
         }
+        .subcom-item {
+            flex: 0 0 100%;
+        }
+        .subcom-name {
+            font-size: 1.4rem;
+        }
+        .subcom-members li {
+            font-size: 1.1rem;
+        }
     }
 </style>
 
@@ -235,7 +305,6 @@
     <p id="subtitle" class="gradient-text">Get to know our society</p>
 </div>
 
-
 <div class="mission-section">
     <div class="mission-content">
         <h1 class="title">Our Mission</h1>
@@ -243,9 +312,7 @@
     </div>
 </div>
 
-
 <div class="grey-margin-container">
-
     <div class="full-white-container">
         <div class="wit-container">
             <div class="content-section">
@@ -254,8 +321,6 @@
                 <p>Our events aim to offer <span class="highlight">educational, networking, and social incentives</span> for WIT members and our sponsors. We prioritize engagement and interaction between participants and sponsors, and welcome suggestions for customized events that meet sponsors' specific needs. These events may be held on campus at USYD or at the sponsor's office, fostering lasting impacts and increasing sponsor visibility.</p>
             </div>
         </div>
-    
-     
 
         <div class="exec-container">
             <div class="content-section">
@@ -263,7 +328,7 @@
             </div>
             <div class="row">
                 <div class="profile">
-                    <img id="profiles" alt="Rayna" src="/static/images/profile_pics/Rayna.png">
+                    <img id="profiles" alt="Rayna" src="/static/images/profile_pics/RaynaM.png">
                     <div class="name">Rayna Lamack</div>
                     <div class="title">President</div>
                     <div class="degree">Bachelor of Engineering (Biomedical)/Bachelor of Science (Neuroscience)</div>
@@ -353,6 +418,41 @@
                     <div class="name">Shekinah Lowe</div>
                     <div class="title">External Director</div>
                     <div class="degree">Bachelor of Engineering (Biomedical)</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="wit-container">
+            <div class="content-section">
+                <h1>Meet our Subcommittees</h1>
+                <p>These are the backbone of WIT, powering our marketing, publications, and events to support our mission.</p>
+                <div class="subcom-container">
+                    <div class="subcom-item">
+                        <div class="subcom-name">Publications Subcommittee</div>
+                        <ul class="subcom-members">
+                            <li>Aanshita Jain</li>
+                            <li>Daphne Lan</li>
+                            <li>Meghna Anand</li>
+                            <li>Mehak Amer</li>
+                            <li>Nila Fernando</li>
+                        </ul>
+                    </div>
+                    <div class="subcom-item">
+                        <div class="subcom-name">Marketing Subcommittee</div>
+                        <ul class="subcom-members">
+                            <li>Ashyra Chand</li>
+                            <li>My Nguyen</li>
+                            <li>Sudhiksha Kartik</li>
+                        </ul>
+                    </div>
+                    <div class="subcom-item">
+                        <div class="subcom-name">Events Subcommittee</div>
+                        <ul class="subcom-members">
+                            <li>Ananya Nakai</li>
+                            <li>Aya Banna</li>
+                            <li>Ella Smith</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

@@ -43,7 +43,7 @@
 
         .pub {
             display: inline-block;
-            text-align: at center;
+            text-align: center;
             margin-right: 50px;
         }
 
@@ -244,15 +244,12 @@
             font-size: 2.5em;
             font-weight: bold;
             margin-bottom: 15px;
+            color: #7A1F8D;
         }
 
         .newsletter-container p {
             font-size: 1.8em;
             margin-bottom: 30px;
-        }
-
-        .newsletter-container h3, 
-        .newsletter-container p {
             color: #7A1F8D;
         }
 
@@ -383,13 +380,12 @@
                 <p class="slideshow-subtitle">Tune in to inspiring stories</p>
             </div>
             <div class="slideshow-box">
-                <img id="slideshow-image" src="{{ url_for('static', filename='images/debuggingthebias.jpg') }}" alt="Debugging the Bias Podcast">
+                <img id="slideshow-image" src="{{ url_for('static', filename='images/debuggingthebias.jpg') }}" alt="Madelaine Pankhurst Podcast">
                 <div class="slideshow-content">
-                    <p>💻✨ <b>"Debugging the Bias"</b> with Madelaine Pankhurst!</p>
-                    <p>From navigating industry challenges to building a career on her own terms, Madelaine shares her journey and the lessons she’s learned along the way. 🌸</p>
-                    <p>Whether you're aiming for academia, industry, or both — her advice is a must-hear.</p>
-                    <a href="https://ugc.production.linktr.ee/582443f3-372e-4f3c-8aec-06f3f8f12238_Madelaine--WiT-Interview--1-.pdf" target="_blank" class="cta-button">
-                        <span class="cta-text">Listen to <b>Debugging the Bias</b></span>
+                    <p id="slideshow-title">💻✨ <b>"Debugging the Bias"</b> with Madelaine Pankhurst!</p>
+                    <p id="slideshow-description">From navigating industry challenges to building a career on her own terms, Madelaine shares her journey and the lessons she’s learned along the way. 🌸<br>Whether you're aiming for academia, industry, or both — her advice is a must-hear.</p>
+                    <a id="slideshow-link" href="https://ugc.production.linktr.ee/582443f3-372e-4f3c-8aec-06f3f8f12238_Madelaine--WiT-Interview--1-.pdf" target="_blank" class="cta-button">
+                        <span class="cta-text">Listen to <b>Madelaine Pankhurst</b></span>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-external-link">
                             <polyline points="15 3 21 3 21 9"></polyline>
                             <line x1="10" y1="14" x2="21" y2="3"></line>
@@ -401,12 +397,12 @@
 
             {# Navigation Buttons #}
             <div class="slideshow-controls">
-                <button class="slideshow-button disabled">
+                <button class="slideshow-button" id="prev-button">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <polygon points="16,4 8,12 16,20"/>
                     </svg>
                 </button>
-                <button class="slideshow-button disabled">
+                <button class="slideshow-button" id="next-button">
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <polygon points="8,4 16,12 8,20"/>
                     </svg>
@@ -415,9 +411,9 @@
         </div>
 
         <div class="newsletter-container">
-            <img src="static/images/wit_circle.png" alt="Newsletter Icon" class="newsletter-icon">
-            <h3 class="purple-text">Join Our Newsletter</h3>
-            <p class="purple-text">Stay updated with the latest WIT news!</p>
+            <img src="{{ url_for('static', filename='images/wit_circle.png') }}" alt="Newsletter Icon" class="newsletter-icon">
+            <h3>Join Our Newsletter</h3>
+            <p>Stay updated with the latest WIT news!</p>
             <a href="https://substack.com/@usydwomenintech" target="_blank" class="cta-button">
                 <span class="cta-text">Subscribe to <b>WIT Newsletters</b></span>
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather-external-link">
@@ -428,6 +424,98 @@
             </a>
         </div>
     </div>
+
+    <script>
+        const podcasts = [
+            {
+                image: "{{ url_for('static', filename='images/debuggingthebias.jpg') }}",
+                alt: "Madelaine Pankhurst Podcast",
+                title: '💻✨ <b>"Debugging the Bias" with Madelaine Pankhurst</b>',
+                description: "From navigating industry challenges to building a career on her own terms, Madelaine shares her journey and the lessons she’s learned along the way. 🌸<br>Whether you're aiming for academia, industry, or both — her advice is a must-hear.",
+                link: "https://ugc.production.linktr.ee/582443f3-372e-4f3c-8aec-06f3f8f12238_Madelaine--WiT-Interview--1-.pdf",
+                linkText: "Listen to <b>Madelaine Pankhurst</b>"
+            },
+            {
+                image: "{{ url_for('static', filename='images/dtb2.jpg') }}",
+                alt: "Tejal Pradhan Podcast",
+                title: '💻✨ <b>"Debugging the Bias" with Tejal Pradhan</b>',
+                description: 'From UNSW to KPMG — and beyond. ✨<br>Tejal shares her journey into tech, busts industry myths, and drops some of the best advice we’ve heard: <i>“If you’re nervous, do it nervous.”</i> 👾<br>Tune in to hear how she carved her path, found purpose in consulting, and why now is the time for more women to step into tech.',
+                link: "https://ugc.production.linktr.ee/c89fa152-6299-40a4-aced-e9877b846014_Episode-2-.pdf",
+                linkText: "Listen to <b>Tejal Pradhan</b>"
+            },
+            {
+                image: "{{ url_for('static', filename='images/dtb4.jpg') }}",
+                alt: "Dr. Stephany Berrio Perez Podcast",
+                title: '💻✨ <b>"Debugging the Bias" with Dr. Stephany Berrio Perez</b>',
+                description: 'Dr. Stephany Berrio Perez shares her journey from Colombia to robotics research at the University of Sydney. We talk career transitions, creativity in engineering, and navigating academia as a woman in STEM.',
+                link: "https://ugc.production.linktr.ee/6c555e2d-eb09-4a2f-ad19-793c9c1ea56d_WIT-Interview-Template.pdf",
+                linkText: "Listen to <b>Dr. Stephany Berrio Perez</b>"
+            },
+            {
+                image: "{{ url_for('static', filename='images/dtb5.jpg') }}",
+                alt: "Sushmi Venkataramanujam Podcast",
+                title: '💻✨ <b>"Debugging the Bias" with Sushmi Venkataramanujam</b>',
+                description: 'From imposter syndrome to AI myths to finding your niche, we’re starting off the semester strong with Sushmi’s wisdom, advice, and insights into building a career you love in tech. 👾✨<br>Listen in for:<br>• why exploring different roles is your superpower<br>• how to turn imposter syndrome into motivation<br>• the real truth on AI “taking our jobs”',
+                link: "https://ugc.production.linktr.ee/c7dc2454-4c1a-43aa-9001-9ce570c4b4bd_Debugging-the-bias-episode-5.pdf",
+                linkText: "Listen to <b>Sushmi Venkataramanujam</b>"
+            },
+            {
+                image: "{{ url_for('static', filename='images/dtb6.jpg') }}",
+                alt: "Danielle Haj-Moussa Podcast",
+                title: '💻✨ <b>"Debugging the Bias" with Danielle Haj-Moussa</b>',
+                description: 'Listen to Danielle share her journey from engineering and law at USyd to deep tech investing, startups, and how to find the courage to just start! ✨',
+                link: "https://ugc.production.linktr.ee/a5a14146-b995-4938-9ca9-00c517efaee0_Debugging-the-Bias---Episode-6.pdf",
+                linkText: "Listen to <b>Danielle Haj-Moussa</b>"
+            },
+            {
+                image: "{{ url_for('static', filename='images/dtb7.jpg') }}",
+                alt: "Dr. Simone Schoenwaelder Podcast",
+                title: '💻✨ <b>"Debugging the Bias" withDr. Simone Schoenwaelder</b>',
+                description: 'From cells to clinical impact: the potential of medtech. 👩‍🔬✨<br>Explore the transformative potential of medtech in this episode, diving into innovations from cells to clinical impact and the future of healthcare technology.',
+                link: "https://ugc.production.linktr.ee/39824944-81ec-47b7-b2ef-65d94f040d61_Simone-WiT-Interview-Transcript.pdf",
+                linkText: "Listen to <b>Dr. Simone Schoenwaelder</b>"
+            }
+        ];
+
+        let currentIndex = 0;
+
+        const slideshowImage = document.getElementById('slideshow-image');
+        const slideshowTitle = document.getElementById('slideshow-title');
+        const slideshowDescription = document.getElementById('slideshow-description');
+        const slideshowLink = document.getElementById('slideshow-link');
+        const slideshowLinkText = slideshowLink.querySelector('.cta-text');
+        const prevButton = document.getElementById('prev-button');
+        const nextButton = document.getElementById('next-button');
+
+        function updateSlideshow() {
+            const podcast = podcasts[currentIndex];
+            slideshowImage.src = podcast.image;
+            slideshowImage.alt = podcast.alt;
+            slideshowTitle.innerHTML = podcast.title;
+            slideshowDescription.innerHTML = podcast.description;
+            slideshowLink.href = podcast.link;
+            slideshowLinkText.innerHTML = podcast.linkText;
+
+            prevButton.classList.toggle('disabled', currentIndex === 0);
+            nextButton.classList.toggle('disabled', currentIndex === podcasts.length - 1);
+        }
+
+        prevButton.addEventListener('click', () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                updateSlideshow();
+            }
+        });
+
+        nextButton.addEventListener('click', () => {
+            if (currentIndex < podcasts.length - 1) {
+                currentIndex++;
+                updateSlideshow();
+            }
+        });
+
+        updateSlideshow();
+    </script>
 
     <footer>  
         {% include "footer.jinja" %}
